@@ -7,9 +7,11 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.andrewsalygin.springcourse.TestBean">
-        <constructor-arg value="Andrew"/>
+    <bean id="musicBean"
+          class="ru.andrewsalygin.springcourse.ClassicalMusic">
+        <!-- Rock Music: Shinedown - Diamond Eyes
+             Classical Music: Schenkerian Analysis -->
+        <constructor-arg value="Schenkerian Analysis"/>
     </bean>
 
 </beans>
