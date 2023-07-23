@@ -1,10 +1,13 @@
 package ru.andrewsalygin.springcourse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Andrew Salygin on 23.07.2023
  */
 public class MusicPlayer {
-    private Music music;
+    private List<Music> music;
 
     private String name;
     private int volume;
@@ -26,15 +29,19 @@ public class MusicPlayer {
     }
 
     // Inversion of Control
-    public MusicPlayer(Music music) {
+    public MusicPlayer(List<Music> music) {
         this.music = music;
     }
 
-    public MusicPlayer() {}
+    public MusicPlayer() {
+        music = new ArrayList<>();
+    }
 
-    public void setMusic(Music music) { this.music = music; }
+    public void setMusic(List<Music> music) { this.music = music; }
 
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        for (Music elem : music) {
+            System.out.println("Playing: " + elem.getSong());
+        }
     }
 }
