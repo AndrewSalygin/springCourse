@@ -14,4 +14,9 @@
         <constructor-arg value="Schenkerian Analysis"/>
     </bean>
 
+    <!-- Dependency Injection -->
+    <bean id="musicPlayer"
+          class="ru.andrewsalygin.springcourse.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
+    </bean>
 </beans>
