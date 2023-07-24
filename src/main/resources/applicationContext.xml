@@ -37,7 +37,8 @@
 
     <!-- Dependency Injection -->
     <bean id="musicPlayer"
-          class="ru.andrewsalygin.springcourse.MusicPlayer">
+          class="ru.andrewsalygin.springcourse.MusicPlayer"
+          scope="prototype">
         <property name="music" ref="listOfMusic"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
