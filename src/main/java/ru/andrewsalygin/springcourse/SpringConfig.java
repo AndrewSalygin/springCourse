@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Andrew Salygin on 24.07.2023
  */
@@ -21,12 +24,20 @@ public class SpringConfig {
     }
 
     @Bean
-    public MusicPlayer musicPlayer() {
-        return new MusicPlayer(classicalMusic(), rockMusic());
+    public JazzMusic jazzMusic() {
+        return new JazzMusic();
     }
 
+    @Bean List<Music> listOfTypeMusic() {
+        List<Music> list = new ArrayList<>();
+        list.add(classicalMusic());
+        list.add(rockMusic());
+        list.add(jazzMusic());
+
+        return list;
+    }
     @Bean
-    public Computer computer() {
-        return new Computer(musicPlayer());
+    public MusicPlayer musicPlayer() {
+        return new MusicPlayer(listOfTypeMusic());
     }
 }
