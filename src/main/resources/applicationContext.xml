@@ -12,7 +12,8 @@
     <bean id="musicBean1"
           class="ru.andrewsalygin.springcourse.ClassicalMusic"
           init-method="methodToInit"
-          destroy-method="methodToDestroy">
+          destroy-method="methodToDestroy"
+          factory-method="getClassicalMusic">
         <constructor-arg value="Schenkerian Analysis"/>
     </bean>
 

@@ -14,8 +14,13 @@ public class ClassicalMusic implements Music {
         this.musicName = musicName;
     }
 
-    public ClassicalMusic(String musicName) {
+    private ClassicalMusic(String musicName) {
         this.musicName = musicName;
+    }
+
+    // Factory method
+    public static ClassicalMusic getClassicalMusic(String musicName) {
+        return new ClassicalMusic(musicName);
     }
 
     public void methodToInit() {
