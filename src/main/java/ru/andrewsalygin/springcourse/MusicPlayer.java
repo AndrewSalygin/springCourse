@@ -1,33 +1,33 @@
 package ru.andrewsalygin.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
  * @author Andrew Salygin on 23.07.2023
  */
+
 @Component
 public class MusicPlayer {
-    //    @Autowired
-//    private Music music;
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
+    private Music music1;
+    private Music music2;
 
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
+    public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("rockMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
     }
-//    @Autowired
-//    public MusicPlayer(Music music) {
-//        this.music = music;
-//    }
-//
-////    @Autowired
-//    public void setMusic(Music music) {
-//        this.music = music;
-//    }
-    public String playMusic() {
-        return "Playing: " + classicalMusic.getSong() + " and " + rockMusic.getSong();
+
+    public void playMusic(TypeOfMusic typesOfMusic) {
+        switch (typesOfMusic) {
+            case CLASSICAL -> {
+                System.out.println("Playing: " + music1.getSong()); }
+            case ROCK -> {
+                System.out.println("Playing: " + music2.getSong()); }
+            default -> {
+                System.out.println("Music is not found");
+            }
+        }
     }
 }
