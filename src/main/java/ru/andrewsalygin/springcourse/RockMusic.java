@@ -1,24 +1,28 @@
 package ru.andrewsalygin.springcourse;
 
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * @author Andrew Salygin on 23.07.2023
  */
+
 public class RockMusic implements Music {
-    private String musicName;
+    List<String> music;
 
-    public String getMusicName() {
-        return musicName;
+    final Random random = new Random();
+    public RockMusic() {
+        music = new ArrayList<>();
+        music.add("rockMusic1");
+        music.add("rockMusic2");
+        music.add("rockMusic3");
     }
 
-    public void setMusicName(String musicName) {
-        this.musicName = musicName;
-    }
-
-    public RockMusic(String musicName) {
-        this.musicName = musicName;
-    }
     @Override
     public String getSong() {
-        return musicName;
+        return music.get(random.nextInt(3));
     }
 }

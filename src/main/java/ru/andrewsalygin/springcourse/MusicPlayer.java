@@ -1,47 +1,38 @@
 package ru.andrewsalygin.springcourse;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Andrew Salygin on 23.07.2023
  */
+
 public class MusicPlayer {
     private List<Music> music;
-
+    @Value("${musicPlayer.name}")
     private String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
+    final private Random random = new Random();
+
+    public MusicPlayer(List<Music> list) {
+        music = list;
+    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    // Inversion of Control
-    public MusicPlayer(List<Music> music) {
-        this.music = music;
-    }
-
-    public MusicPlayer() {
-        music = new ArrayList<>();
-    }
-
-    public void setMusic(List<Music> music) { this.music = music; }
-
     public void playMusic() {
-        for (Music elem : music) {
-            System.out.println("Playing: " + elem.getSong());
-        }
+        System.out.println(music.get(random.nextInt(3)).getSong());
     }
 }

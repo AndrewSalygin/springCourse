@@ -1,38 +1,41 @@
 package ru.andrewsalygin.springcourse;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * @author Andrew Salygin on 23.07.2023
  */
+
 public class ClassicalMusic implements Music {
-    private String musicName;
+    List<String> music;
+    final Random random = new Random();
 
-    public String getMusicName() {
-        return musicName;
+    public ClassicalMusic() {
+        music = new ArrayList<>();
+        music.add("classicalMusic1");
+        music.add("classicalMusic2");
+        music.add("classicalMusic3");
     }
-
-    public void setMusicName(String musicName) {
-        this.musicName = musicName;
-    }
-
-    private ClassicalMusic(String musicName) {
-        this.musicName = musicName;
-    }
-
-    // Factory method
-    public static ClassicalMusic getClassicalMusic(String musicName) {
-        return new ClassicalMusic(musicName);
-    }
-
-    public void methodToInit() {
-        System.out.println("Doing initialization...");
-    }
-
-    public void methodToDestroy() {
-        System.out.println("Doing destruction...");
-    }
-
     @Override
     public String getSong() {
-        return musicName;
+        return music.get(random.nextInt(3));
+    }
+
+    @PostConstruct
+    public void doMyInit() {
+        System.out.println("Doing my initialization");
+    }
+
+    @PreDestroy
+    public void doMyDestroy() {
+        System.out.println("Doing my destruction");
     }
 }

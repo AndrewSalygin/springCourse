@@ -1,24 +1,25 @@
 package ru.andrewsalygin.springcourse;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
- * @author Andrew Salygin on 23.07.2023
+ * @author Andrew Salygin on 24.07.2023
  */
 public class JazzMusic implements Music {
-    private String musicName;
+    List<String> music;
 
-    public String getMusicName() {
-        return musicName;
+    final Random random = new Random();
+    public JazzMusic() {
+        music = new ArrayList<>();
+        music.add("jazzMusic1");
+        music.add("jazzMusic2");
+        music.add("jazzMusic3");
     }
 
-    public void setMusicName(String musicName) {
-        this.musicName = musicName;
-    }
-
-    public JazzMusic(String musicName) {
-        this.musicName = musicName;
-    }
     @Override
     public String getSong() {
-        return musicName;
+        return music.get(random.nextInt(3));
     }
 }
