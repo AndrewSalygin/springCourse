@@ -7,9 +7,5 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.andrewsalygin.springcourse.TestBean">
-        <constructor-arg value="Andrew"/>
-    </bean>
-
+        <context:component-scan base-package="ru.andrewsalygin.springcourse"/>
 </beans>
