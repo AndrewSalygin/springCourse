@@ -13,7 +13,8 @@
           class="ru.andrewsalygin.springcourse.ClassicalMusic"
           init-method="methodToInit"
           destroy-method="methodToDestroy"
-          factory-method="getClassicalMusic">
+          factory-method="getClassicalMusic"
+          scope="prototype">
         <constructor-arg value="Schenkerian Analysis"/>
     </bean>
 

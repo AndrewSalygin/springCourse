@@ -17,6 +17,11 @@ public class TestSpring {
         MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
         MusicPlayer musicPlayer2 = context.getBean("musicPlayer", MusicPlayer.class);
 
+        // Doing method is executed 3 times with prototype
+        // Destroy method is executed 0 times with prototype
+        ClassicalMusic classicalMusic1 = context.getBean("musicBean1", ClassicalMusic.class);
+        ClassicalMusic classicalMusic2 = context.getBean("musicBean1", ClassicalMusic.class);
+
         boolean comparison = musicPlayer1 == musicPlayer2;
 
         System.out.println(musicPlayer1);
