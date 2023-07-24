@@ -10,7 +10,6 @@ import javax.annotation.PreDestroy;
  * @author Andrew Salygin on 23.07.2023
  */
 
-@Component
 public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
