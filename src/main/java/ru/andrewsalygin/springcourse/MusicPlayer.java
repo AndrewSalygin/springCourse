@@ -1,6 +1,7 @@
 package ru.andrewsalygin.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,8 +9,19 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MusicPlayer {
-    //    @Autowired
-//    private Music music;
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
 
@@ -18,15 +30,6 @@ public class MusicPlayer {
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
     }
-//    @Autowired
-//    public MusicPlayer(Music music) {
-//        this.music = music;
-//    }
-//
-////    @Autowired
-//    public void setMusic(Music music) {
-//        this.music = music;
-//    }
     public String playMusic() {
         return "Playing: " + classicalMusic.getSong() + " and " + rockMusic.getSong();
     }
