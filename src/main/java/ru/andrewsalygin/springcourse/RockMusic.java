@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * @author Andrew Salygin on 23.07.2023
  */
-@Component
+
 public class RockMusic implements Music {
     List<String> music;
 
