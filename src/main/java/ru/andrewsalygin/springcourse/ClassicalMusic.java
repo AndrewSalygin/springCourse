@@ -17,6 +17,15 @@ public class ClassicalMusic implements Music {
     public ClassicalMusic(String musicName) {
         this.musicName = musicName;
     }
+
+    public void methodToInit() {
+        System.out.println("Doing initialization...");
+    }
+
+    public void methodToDestroy() {
+        System.out.println("Doing destruction...");
+    }
+
     @Override
     public String getSong() {
         return musicName;
