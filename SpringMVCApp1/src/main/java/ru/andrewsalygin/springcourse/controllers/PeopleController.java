@@ -3,10 +3,9 @@ package ru.andrewsalygin.springcourse.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.andrewsalygin.springcourse.dao.PersonDAO;
+import ru.andrewsalygin.springcourse.models.Person;
 
 /**
  * @author Andrew Salygin on 26.07.2023
@@ -36,5 +35,17 @@ public class PeopleController {
         return "people/show";
     }
 
+    @GetMapping("/new")
+    // Вместо @ModelAttribute("person") Person person можно было написать
+    // Model model и оставить строчку в методе
+    public String newPerson(@ModelAttribute("person") Person person) {
+        //model.addAttribute("person", new Person());
+        return "people/new";
+    }
 
+    @PostMapping()
+    public String create(@ModelAttribute("person") Person person) {
+        personDAO.save(person);
+        return "redirect:/people";
+    }
 }
