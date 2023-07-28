@@ -43,7 +43,7 @@ public class PeopleController {
         return "people/new";
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     public String create(@ModelAttribute("person") Person person) {
         personDAO.save(person);
         return "redirect:/people";
@@ -61,7 +61,7 @@ public class PeopleController {
         return "redirect:/people";
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         personDAO.delete(id);
         return "redirect:/people";
