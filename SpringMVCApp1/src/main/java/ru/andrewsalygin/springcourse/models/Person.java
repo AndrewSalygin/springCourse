@@ -1,27 +1,26 @@
 package ru.andrewsalygin.springcourse.models;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 /**
  * @author Andrew Salygin on 26.07.2023
  */
 public class Person {
     private int id;
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 30, message = "Имя должно быть между 2-мя и 30 символами")
     private String name;
-    @Min(value = 0, message = "Age should be greater than 0")
+    @Min(value = 0, message = "Возраст должен быть больше 0")
     private int age;
-    @NotEmpty(message = "Email should not be empty")
-    @Email(message = "Email should be valid")
+    @NotEmpty(message = "Email не должен быть пустым")
+    @Email(message = "Email должен быть правильным")
     private String email;
 
-    public Person() {
+    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}",
+            message = "Адрес не соответствует формату: Страна, Город, Почтовый код (6 знаков)")
+    private String address;
 
-    }
+    public Person() {}
 
     public Person(int id, String name, int age, String email) {
         this.id = id;
@@ -32,6 +31,10 @@ public class Person {
 
     public int getId() {
         return id;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public void setId(int id) {
@@ -60,5 +63,9 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
