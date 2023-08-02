@@ -39,3 +39,4 @@ build/
 
 ### My ###
 .idea/
+springMVCApp1/src/main/resources/database.properties
